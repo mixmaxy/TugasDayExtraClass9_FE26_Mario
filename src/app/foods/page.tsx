@@ -5,23 +5,24 @@
 // 2. Tidak ada loading spinner untuk initial load
 // 3. API key/secrets tidak terekspos ke client
 // 4. SEO: search engine bisa index konten lengkap
- 
+
 import type { Metadata } from "next";
 import { FoodCard } from "@/components/FoodCard";
 import { UtensilsCrossed } from "lucide-react";
- 
+
 export const metadata: Metadata = {
   title: "Daftar Makanan",
-  description: "Jelajahi dan kelola daftar makanan segar dan ultra-proses di FoodVault.",
+  description:
+    "Jelajahi dan kelola daftar makanan segar dan ultra-proses di FoodVault.",
 };
- 
+
 import { prisma } from "@/lib/prisma";
- 
+
 // Revalidate setiap 60 detik (ISR - Incremental Static Regeneration)
 // KENAPA? Data makanan tidak berubah setiap detik. Dengan cache 60s,
 // halaman ini sangat cepat dan tidak membebani database di setiap request.
 export const revalidate = 60;
- 
+
 async function getFoods() {
   // DIRECT ACCESS - Mengambil data langsung dari database
   // Di Server Component, kita bisa langsung menggunakan Prisma client
@@ -44,14 +45,14 @@ async function getFoods() {
     throw new Error("Gagal mengambil data makanan");
   }
 }
- 
+
 export default async function FoodsPage() {
   const foods = await getFoods();
- 
+
   return (
-    <main className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+    <main className="max-w-6xl mx-auto px-4 sm:px-6 pt-24 pb-16">
       {/* Page Header */}
-      <header className="mb-10 animate-fade-up">
+      <header className="mb-12 animate-fade-up">
         <p className="text-amber-500 font-semibold text-sm uppercase tracking-widest mb-2">
           Koleksi Makanan
         </p>
@@ -59,9 +60,10 @@ export default async function FoodsPage() {
           Daftar Makanan
         </h1>
         <p className="text-stone-500 mt-3 max-w-xl">
-          Temukan dan kelola informasi makanan — dari bahan segar hingga produk ultra-proses.
+          Temukan dan kelola informasi makanan — dari bahan segar hingga produk
+          ultra-proses.
         </p>
- 
+
         {/* Stats */}
         {foods.length > 0 && (
           <div className="flex gap-4 mt-5">
@@ -77,7 +79,7 @@ export default async function FoodsPage() {
           </div>
         )}
       </header>
- 
+
       {/* Empty State */}
       {foods.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-24 text-center animate-fade-up">
@@ -100,7 +102,7 @@ export default async function FoodsPage() {
           - Desktop: 3 kolom
         */
         <ul
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-up"
           aria-label="Daftar makanan"
           /*
             <ul> dengan <li> adalah struktur semantik yang benar untuk list

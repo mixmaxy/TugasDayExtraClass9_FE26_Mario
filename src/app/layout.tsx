@@ -3,7 +3,7 @@ import { Syne, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import Footer from "@/components/Footer";
- 
+
 // Syne: display font yang bold dan karakteristik untuk judul
 // DM Sans: body font yang bersih dan readable
 const syne = Syne({
@@ -11,13 +11,13 @@ const syne = Syne({
   variable: "--font-syne",
   display: "swap", // 'swap' penting untuk CLS (Core Web Vitals) - hindari FOIT
 });
- 
+
 const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-dm-sans",
   display: "swap",
 });
- 
+
 export const metadata: Metadata = {
   title: {
     template: "%s",
@@ -26,25 +26,30 @@ export const metadata: Metadata = {
   description:
     "Aplikasi manajemen makanan. Bedakan UPF (Ultra-Processed Food) dengan makanan segar secara mudah.",
 };
- 
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id" className={`${syne.variable} ${dmSans.variable}`}>
+    <html
+      lang="id"
+      className={`${syne.variable} ${dmSans.variable} scroll-smooth`}
+    >
       {/*
         lang="id" → penting untuk accessibility screen reader dan SEO
         Mendefinisikan bahasa utama dokumen
       */}
-      <body className="bg-stone-50 text-stone-900 font-sans antialiased min-h-screen">
+      <body className="bg-stone-50 text-stone-900 font-sans antialiased min-h-screen flex flex-col">
         <Navbar />
         {/*
-          main dengan role semantik yang benar
-          padding-top untuk kompensasi fixed navbar
+          Menggunakan flex untuk layout yang proper dengan footer
+          children sudah memiliki padding-top di setiap halaman
         */}
-        <main role="main">{children}</main>
+        <div role="main" className="flex-1">
+          {children}
+        </div>
         <Footer />
       </body>
     </html>

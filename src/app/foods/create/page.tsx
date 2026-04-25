@@ -1,18 +1,18 @@
 // Server Component wrapper untuk halaman buat makanan
- 
+
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, Sparkles } from "lucide-react";
 import { CreateFoodForm } from "@/components/CreateFoodForm";
- 
+
 export const metadata: Metadata = {
   title: "Buat Makanan Baru",
   description: "Tambahkan makanan baru ke koleksi FoodVault kamu.",
 };
- 
+
 export default function CreateFoodPage() {
   return (
-    <main className="max-w-2xl mx-auto px-4 sm:px-6 py-10">
+    <main className="max-w-2xl mx-auto px-4 sm:px-6 pt-24 pb-16">
       {/* Back Navigation */}
       <nav aria-label="Navigasi kembali" className="mb-8 animate-fade-up">
         <Link
@@ -23,7 +23,7 @@ export default function CreateFoodPage() {
           Kembali ke Daftar
         </Link>
       </nav>
- 
+
       {/* Card */}
       <article className="bg-white rounded-2xl border border-stone-200 overflow-hidden animate-fade-up stagger-1">
         {/* Card Header dengan accent */}
@@ -42,7 +42,7 @@ export default function CreateFoodPage() {
             </div>
           </div>
         </div>
- 
+
         {/* Form */}
         <div className="p-6 sm:p-8">
           {/*
@@ -52,29 +52,36 @@ export default function CreateFoodPage() {
           <CreateFoodForm />
         </div>
       </article>
- 
+
       {/* Tips Card */}
       <aside
         className="mt-6 p-5 rounded-2xl bg-amber-50 border border-amber-100 animate-fade-up stagger-2"
         aria-label="Tips mengisi form"
       >
-        <h2 className="font-semibold text-amber-900 text-sm mb-3">💡 Tips Pengisian</h2>
+        <h2 className="font-semibold text-amber-900 text-sm mb-3">
+          💡 Tips Pengisian
+        </h2>
         <ul className="space-y-2 text-sm text-amber-800">
           <li className="flex gap-2">
             <span aria-hidden="true">•</span>
             <span>
-              <strong>Fresh</strong>: Makanan alami seperti buah, sayur, daging segar, biji-bijian utuh.
+              <strong>Fresh</strong>: Makanan alami seperti buah, sayur, daging
+              segar, biji-bijian utuh.
             </span>
           </li>
           <li className="flex gap-2">
             <span aria-hidden="true">•</span>
             <span>
-              <strong>UPF</strong>: Makanan dengan banyak bahan tambahan pabrik seperti pengawet, pewarna, pemanis buatan.
+              <strong>UPF</strong>: Makanan dengan banyak bahan tambahan pabrik
+              seperti pengawet, pewarna, pemanis buatan.
             </span>
           </li>
           <li className="flex gap-2">
             <span aria-hidden="true">•</span>
-            <span>Pisahkan bahan dengan koma untuk tampilan tag yang rapi di halaman detail.</span>
+            <span>
+              Pisahkan bahan dengan koma untuk tampilan tag yang rapi di halaman
+              detail.
+            </span>
           </li>
         </ul>
       </aside>

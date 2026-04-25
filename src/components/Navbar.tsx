@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { PlusCircle, Utensils } from "lucide-react";
- 
+
 export function Navbar() {
   return (
     /*
@@ -9,9 +9,9 @@ export function Navbar() {
       - <nav> menandai sekumpulan link navigasi
       Ini penting untuk screen reader dan SEO
     */
-    <header className="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur-md border-b border-stone-200">
+    <header className="fixed top-0 inset-x-0 z-50 bg-white/95 backdrop-blur-sm border-b border-stone-200">
       <nav
-        className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between"
+        className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4"
         aria-label="Navigasi utama"
       >
         {/* Logo / Brand */}
@@ -26,7 +26,7 @@ export function Navbar() {
           />
           <span>FoodVault</span>
         </Link>
- 
+
         {/* Actions */}
         <div className="flex items-center gap-3">
           <Link
