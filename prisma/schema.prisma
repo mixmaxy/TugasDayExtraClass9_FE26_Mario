@@ -1,0 +1,32 @@
+// prisma/schema.prisma
+// Prisma schema untuk koneksi ke Supabase (PostgreSQL)
+// Kita define FoodType sebagai enum agar database enforce value yang valid
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  // Untuk Supabase, gunakan connection pooling (port 6543) untuk transaksi
+  // dan direct connection (port 5432) untuk migrations
+  url       = env("DATABASE_URL")
+}
+
+enum FoodType {
+  upf   // Ultra Processed Food
+  fresh // Fresh/whole food
+}
+
+model Food {
+  id          String   @id @default(cuid())
+  name        String
+  ingredients String
+  description String   @db.Text // @db.Text agar Prisma map ke PostgreSQL TEXT (unlimited length)
+  type        FoodType
+  imageUrl    String?  // Optional image URL untuk bonus styling
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("foods") // Nama tabel di database: "foods" (lowercase, plural - konvensi PostgreSQL)
+}
