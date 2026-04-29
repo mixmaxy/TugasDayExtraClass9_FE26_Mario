@@ -4,6 +4,9 @@ import type { FoodType } from "@prisma/client";
 
 const VALID_FOOD_TYPES: FoodType[] = ["upf", "fresh"];
 
+// Force dynamic rendering untuk API route (jangan cache di build time)
+export const dynamic = "force-dynamic";
+
 // GET /api/foods → ambil semua makanan, diurutkan terbaru dulu
 export async function GET() {
   try {
@@ -24,7 +27,7 @@ export async function GET() {
     console.error("[GET /api/foods]", error);
     return NextResponse.json(
       { success: false, error: "Gagal mengambil data makanan" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -39,14 +42,14 @@ export async function POST(request: Request) {
     if (!name || !ingredients || !description || !type) {
       return NextResponse.json(
         { success: false, error: "Semua field wajib diisi" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     if (!VALID_FOOD_TYPES.includes(type as FoodType)) {
       return NextResponse.json(
         { success: false, error: "Tipe makanan tidak valid" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -65,8 +68,7 @@ export async function POST(request: Request) {
     console.error("[POST /api/foods]", error);
     return NextResponse.json(
       { success: false, error: "Gagal membuat makanan baru" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
-
