@@ -10,7 +10,6 @@ datasource db {
   provider  = "postgresql"
   // Untuk Supabase, gunakan connection pooling (port 6543) untuk transaksi
   // dan direct connection (port 5432) untuk migrations
-  url       = env("DATABASE_URL")
 }
 
 enum FoodType {
