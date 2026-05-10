@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Syne, DM_Sans } from "next/font/google";
 import "./globals.css";
-import "./globals-deferred.css";
 import { Navbar } from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -36,8 +35,7 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      data-scroll-behavior="smooth"
-      className={`${syne.variable} ${dmSans.variable}`}
+      className={`${syne.variable} ${dmSans.variable} scroll-smooth`}
     >
       {/*
         lang="id" → penting untuk accessibility screen reader dan SEO

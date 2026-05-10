@@ -94,12 +94,12 @@ export default function Home() {
                   Menggunakan div sebagai placeholder untuk menjamin tampilan bersih tanpa broken image.
                 */}
                 <Image
-                  src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=600&auto=format&fit=crop"
+                  src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1000&auto=format&fit=crop"
                   alt="Healthy Food Display"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority={true}
+                  priority
                 />
               </div>
 
