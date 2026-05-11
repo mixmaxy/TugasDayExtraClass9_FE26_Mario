@@ -60,8 +60,8 @@ export function FoodCard({ food, index = 0 }: FoodCardProps) {
           ) : (
             // Placeholder jika tidak ada gambar
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-5xl" aria-hidden="true">
-                🍽️
+              <span className="text-5xl" data-testid="image-placeholder">
+                ...
               </span>
             </div>
           )}
