@@ -20,7 +20,7 @@ const config: Config = {
   coverageReporters: ["text", "html", "lcov"],
   coverageDirectory: "./coverage",
   moduleNameMapper: {
-    "^@/(.*)$": "<rootDir>/$1",
+    "^@/(.*)$": "<rootDir>/src/$1",
   },
 };
 
